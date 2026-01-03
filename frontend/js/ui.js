@@ -31,18 +31,18 @@ class UIManager {
       <div class="track-card" data-track-id="${track.id}">
         <div class="track-card__header">
           <h3 class="track-card__title">${this.escapeHtml(track.title)}</h3>
-          <p class="track-card__artist">${this.escapeHtml(track.artist || 'Unknown Artist')}</p>
+          <p class="track-card__artist">${this.escapeHtml(track.artist)}</p>
         </div>
         
         <div class="track-card__info">
-          <span class="track-card__bpm">${track.bpm || 'N/A'} BPM</span>
-          <span class="track-card__key">${track.key || 'N/A'}</span>
-          <span class="track-card__duration">${this.formatDuration(track.duration || 0)}</span>
+          <span class="track-card__bpm">${track.bpm} BPM</span>
+          <span class="track-card__key">${track.key}</span>
+          <span class="track-card__duration">${this.formatDuration(track.duration)}</span>
         </div>
         
         <div class="track-card__tags">
-          ${(track.genre || []).map(g => `<span class="tag tag--genre">${this.escapeHtml(g)}</span>`).join('')}
-          ${(track.mood || []).map(m => `<span class="tag tag--mood">${this.escapeHtml(m)}</span>`).join('')}
+          ${track.genre.map(g => `<span class="tag tag--genre">${g}</span>`).join('')}
+          ${track.mood.map(m => `<span class="tag tag--mood">${m}</span>`).join('')}
         </div>
         
         <button class="track-card__play-btn" data-track-id="${track.id}">
@@ -56,7 +56,6 @@ class UIManager {
   attachTrackCardListeners() {
     document.querySelectorAll('.track-card__play-btn').forEach(btn => {
       btn.addEventListener('click', async (e) => {
-        e.stopPropagation();
         const trackId = e.target.dataset.trackId;
         const track = await api.getTrack(trackId);
         if (track) {
@@ -98,7 +97,6 @@ class UIManager {
 
   // 유틸리티: HTML 이스케이프
   escapeHtml(text) {
-    if (!text) return '';
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
@@ -106,9 +104,8 @@ class UIManager {
 
   // 유틸리티: 시간 포맷
   formatDuration(seconds) {
-    if (!seconds) return '0:00';
     const mins = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
+    const secs = seconds % 60;
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   }
 }

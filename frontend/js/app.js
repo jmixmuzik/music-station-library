@@ -10,9 +10,9 @@ async function initializeApp() {
   try {
     // Fragment 로드
     await fragmentLoader.loadMultiple([
-      { elementId: 'header', fragmentPath: 'fragments/header.html' },
-      { elementId: 'sidebar', fragmentPath: 'fragments/sidebar.html' },
-      { elementId: 'footer', fragmentPath: 'fragments/footer.html' }
+      { elementId: 'header', fragmentPath: '/fragments/header.html' },
+      { elementId: 'sidebar', fragmentPath: '/fragments/sidebar.html' },
+      { elementId: 'footer', fragmentPath: '/fragments/footer.html' }
     ]);
 
     // 플레이어 바 HTML 추가
@@ -181,32 +181,32 @@ function initializeEventListeners() {
     });
   }
 
-  // 플레이어 컨트롤 (동적으로 생성되므로 이벤트 위임 사용)
-  document.addEventListener('click', (e) => {
-    if (e.target.id === 'play-btn' || e.target.closest('#play-btn')) {
+  // 플레이어 컨트롤
+  const playBtn = document.getElementById('play-btn');
+  if (playBtn) {
+    playBtn.addEventListener('click', () => {
       player.togglePlay();
-    }
-  });
+    });
+  }
 
-  // 프로그레스 바 클릭 (seek) - 동적 생성되므로 이벤트 위임 사용
-  document.addEventListener('click', (e) => {
-    const progressContainer = e.target.closest('#progress-container');
-    if (progressContainer) {
-      const rect = progressContainer.getBoundingClientRect();
+  // 프로그레스 바 클릭 (seek)
+  const progressContainer = document.getElementById('progress-container');
+  if (progressContainer) {
+    progressContainer.addEventListener('click', (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
       const percent = (e.clientX - rect.left) / rect.width;
       const time = percent * player.audio.duration;
-      if (!isNaN(time)) {
-        player.seek(time);
-      }
-    }
-  });
+      player.seek(time);
+    });
+  }
 
-  // 볼륨 컨트롤 - 동적 생성되므로 이벤트 위임 사용
-  document.addEventListener('input', (e) => {
-    if (e.target.id === 'volume-slider') {
+  // 볼륨 컨트롤
+  const volumeSlider = document.getElementById('volume-slider');
+  if (volumeSlider) {
+    volumeSlider.addEventListener('input', (e) => {
       player.setVolume(e.target.value / 100);
-    }
-  });
+    });
+  }
 }
 
 // DOMContentLoaded 이벤트

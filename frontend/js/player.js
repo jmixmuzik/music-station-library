@@ -66,8 +66,6 @@ class AudioPlayer {
 
     const currentTime = this.audio.currentTime;
     const duration = this.audio.duration;
-    if (isNaN(duration)) return;
-    
     const progress = (currentTime / duration) * 100;
 
     // UI 업데이트
@@ -91,11 +89,8 @@ class AudioPlayer {
   updatePlayerUI() {
     if (!this.currentTrack) return;
 
-    const titleEl = document.getElementById('player-title');
-    const artistEl = document.getElementById('player-artist');
-    
-    if (titleEl) titleEl.textContent = this.currentTrack.title;
-    if (artistEl) artistEl.textContent = this.currentTrack.artist || 'Unknown Artist';
+    document.getElementById('player-title').textContent = this.currentTrack.title;
+    document.getElementById('player-artist').textContent = this.currentTrack.artist;
   }
 
   updatePlayButton() {
@@ -106,9 +101,9 @@ class AudioPlayer {
   }
 
   updateProgressBar(progress) {
-    const progressFill = document.getElementById('progress-fill');
-    if (progressFill) {
-      progressFill.style.width = `${progress}%`;
+    const progressBar = document.getElementById('progress-fill');
+    if (progressBar) {
+      progressBar.style.width = `${progress}%`;
     }
   }
 

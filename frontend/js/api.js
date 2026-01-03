@@ -1,7 +1,7 @@
 // API 클래스
 class MusicLibraryAPI {
   constructor() {
-    this.baseUrl = 'data';  // Mock 데이터 경로
+    this.baseUrl = '/data';  // Mock 데이터 경로
     this.tracks = [];
     this.tags = {};
   }
@@ -86,4 +86,48 @@ class MusicLibraryAPI {
 
 // 전역 인스턴스
 const api = new MusicLibraryAPI();
+
+/* 
+ * Phase 2 (Real API) 버전으로 전환하려면 위의 클래스를 아래 코드로 교체:
+ * 
+ * class MusicLibraryAPI {
+ *   constructor() {
+ *     this.baseUrl = 'http://localhost:5000/api';  // 실제 API URL로 변경
+ *   }
+ * 
+ *   async getTracks(filters = {}) {
+ *     // 쿼리 파라미터 생성
+ *     const params = new URLSearchParams();
+ *     if (filters.genre) params.append('genre', filters.genre.join(','));
+ *     if (filters.mood) params.append('mood', filters.mood.join(','));
+ *     if (filters.bpmMin) params.append('bpm_min', filters.bpmMin);
+ *     if (filters.bpmMax) params.append('bpm_max', filters.bpmMax);
+ *     if (filters.key) params.append('key', filters.key);
+ *     if (filters.search) params.append('search', filters.search);
+ * 
+ *     const response = await fetch(`${this.baseUrl}/tracks?${params}`);
+ *     if (!response.ok) throw new Error('API request failed');
+ *     const data = await response.json();
+ *     return data.data;
+ *   }
+ * 
+ *   async getTrack(id) {
+ *     const response = await fetch(`${this.baseUrl}/tracks/${id}`);
+ *     if (!response.ok) throw new Error('Track not found');
+ *     const data = await response.json();
+ *     return data.data;
+ *   }
+ * 
+ *   async getTags() {
+ *     const response = await fetch(`${this.baseUrl}/tags`);
+ *     if (!response.ok) throw new Error('Failed to load tags');
+ *     const data = await response.json();
+ *     return data.data;
+ *   }
+ * 
+ *   getStreamUrl(id) {
+ *     return `${this.baseUrl}/stream/${id}`;
+ *   }
+ * }
+ */
 
