@@ -1,0 +1,42 @@
+<div class="sidebar">
+  <div class="sidebar__section">
+    <h3 class="sidebar__title">Search</h3>
+    <input 
+      type="text" 
+      id="search-input" 
+      class="sidebar__search" 
+      placeholder="Search tracks..."
+    >
+  </div>
+
+  <div class="sidebar__section">
+    <h3 class="sidebar__title">Genre</h3>
+    <div id="genre-filters"></div>
+  </div>
+
+  <div class="sidebar__section">
+    <h3 class="sidebar__title">Mood</h3>
+    <div id="mood-filters"></div>
+  </div>
+
+  <div class="sidebar__section">
+    <h3 class="sidebar__title">BPM Range</h3>
+    <div class="sidebar__range">
+      <input type="number" id="bpm-min" placeholder="Min" min="0" max="200">
+      <span>-</span>
+      <input type="number" id="bpm-max" placeholder="Max" min="0" max="200">
+    </div>
+  </div>
+
+  <div class="sidebar__section">
+    <h3 class="sidebar__title">Key</h3>
+    <select id="key-select" class="sidebar__select">
+      <option value="">All Keys</option>
+    </select>
+  </div>
+
+  <button id="reset-filters-btn" class="sidebar__reset-btn">
+    Reset Filters
+  </button>
+</div>
+

@@ -1,0 +1,70 @@
+{
+  "tracks": [
+    {
+      "id": "track_001",
+      "title": "Summer Vibes",
+      "artist": "Producer Name",
+      "genre": ["House", "Electronic"],
+      "mood": ["Uplifting", "Energetic"],
+      "bpm": 128,
+      "key": "Am",
+      "duration": 180,
+      "filePath": "/music/summer-vibes.mp3",
+      "createdAt": "2024-01-15T10:30:00Z"
+    },
+    {
+      "id": "track_002",
+      "title": "Dark Techno",
+      "artist": "Producer Name",
+      "genre": ["Techno"],
+      "mood": ["Dark", "Mysterious"],
+      "bpm": 135,
+      "key": "Fm",
+      "duration": 240,
+      "filePath": "/music/dark-techno.mp3",
+      "createdAt": "2024-01-20T14:20:00Z"
+    },
+    {
+      "id": "track_003",
+      "title": "Chill Lo-Fi",
+      "artist": "Beat Maker",
+      "genre": ["Lo-Fi", "Hip-Hop"],
+      "mood": ["Calm", "Dreamy"],
+      "bpm": 90,
+      "key": "Cm",
+      "duration": 195,
+      "filePath": "/music/chill-lofi.mp3",
+      "createdAt": "2024-01-25T09:15:00Z"
+    },
+    {
+      "id": "track_004",
+      "title": "Energetic Trap",
+      "artist": "Trap Producer",
+      "genre": ["Trap", "Hip-Hop"],
+      "mood": ["Energetic", "Aggressive"],
+      "bpm": 140,
+      "key": "G",
+      "duration": 210,
+      "filePath": "/music/energetic-trap.mp3",
+      "createdAt": "2024-02-01T16:45:00Z"
+    },
+    {
+      "id": "track_005",
+      "title": "Ambient Space",
+      "artist": "Ambient Artist",
+      "genre": ["Ambient", "Cinematic"],
+      "mood": ["Calm", "Dreamy", "Mysterious"],
+      "bpm": 60,
+      "key": "Dm",
+      "duration": 300,
+      "filePath": "/music/ambient-space.mp3",
+      "createdAt": "2024-02-05T11:20:00Z"
+    }
+  ],
+  "tags": {
+    "genres": ["House", "Techno", "Trap", "Hip-Hop", "R&B", "Ambient", "Cinematic", "Electronic", "Lo-Fi"],
+    "moods": ["Energetic", "Calm", "Dark", "Uplifting", "Melancholic", "Aggressive", "Dreamy", "Mysterious"],
+    "keys": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "Cm", "C#m", "Dm", "D#m", "Em", "Fm", "F#m", "Gm", "G#m", "Am", "A#m", "Bm"]
+  }
+}
+

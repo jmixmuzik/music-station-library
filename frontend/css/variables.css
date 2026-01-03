@@ -1,0 +1,29 @@
+/* CSS Variables */
+:root {
+  /* Colors */
+  --color-primary: #3b82f6;
+  --color-secondary: #64748b;
+  --color-background: #0f172a;
+  --color-surface: #1e293b;
+  --color-text: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  
+  /* Typography */
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  
+  /* Layout */
+  --sidebar-width: 280px;
+  --header-height: 60px;
+  --player-height: 80px;
+}
+
